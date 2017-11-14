@@ -1,0 +1,34 @@
+Drew Facilities Blueprint Search<html>
+<head><title>Facilities Documents Search</title></head>
+<body>
+<form method="post" action="">
+    <input type="text" name="something" value="" />
+    <input type="submit" name="submit" />
+  </form>
+<?php
+
+$what = htmlspecialchars($_POST['something']);
+
+<?php
+ DEFINE('DB_USERNAME', 'root');
+ DEFINE('DB_PASSWORD', 'root');
+ DEFINE('DB_HOST', 'localhost');
+ DEFINE('DB_DATABASE', 'performance_schema');
+
+ $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
+ if (mysqli_connect_error()) {
+  die('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
+ }
+
+ echo 'Connected successfully.';
+
+ $mysqli->close();
+?>
+
+echo 'Query: ', $what, '<br>';
+$result = $db->query("SELECT link_to_blueprint FROM blueprints WHERE blueprint_name LIKE '%$what%'")
+or trigger_error($db->error);
+echo 'Result: ', $what, '<br>';?>
+</body>
+</html>
