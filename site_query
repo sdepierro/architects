@@ -14,6 +14,22 @@ $what = htmlspecialchars($_POST['something']);
 //$sqlPass = 'CSCI330';
 //$dbName = 'Movies';
 
+$user = 'root';
+$password = 'root';
+$db = 'inventory';
+$host = 'localhost';
+$port = 3306;
+
+$link = mysql_connect(
+   "$host:$port", 
+   $user, 
+   $password
+);
+$db_selected = mysql_select_db(
+   $db, 
+   $link
+);
+
 $db =  new mysqli($sqlHost, $sqlUser, $sqlPass, $dbName) ;
 
 if($db->connect_errno){
