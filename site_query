@@ -1,0 +1,28 @@
+<html>
+<head><title>Facilities Documents Search</title></head>
+<body>
+<form method="post" action="">
+    <input type="text" name="something" value="" />
+    <input type="submit" name="submit" />
+  </form>
+<?php
+
+$what = htmlspecialchars($_POST['something']);
+
+//$sqlHost = 'localhost'; HERE WE NEED TO GET TO THE DATABASE
+//$sqlUser = 'user';
+//$sqlPass = 'CSCI330';
+//$dbName = 'Movies';
+
+$db =  new mysqli($sqlHost, $sqlUser, $sqlPass, $dbName) ;
+
+if($db->connect_errno){
+    printf("Connect failed: %s\n", $db->connect_error);
+    exit();
+}
+echo 'Query: ', $what, '<br>';
+$result = $db->query("SELECT link_to_blueprint FROM blueprints WHERE blueprint_name LIKE '%$what%' ORDER BY blueprint_name")
+or trigger_error($db->error);
+var_dump($result);?>
+</body>
+</html>
