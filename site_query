@@ -20,14 +20,14 @@ $db = 'inventory';
 $host = 'localhost';
 $port = 3306;
 
-$link = mysql_connect(
-   "$host:$port", 
+$link = mysqli_init();
+$success = mysqli_real_connect(
+   $link, 
+   $host, 
    $user, 
-   $password
-);
-$db_selected = mysql_select_db(
-   $db, 
-   $link
+   $password, 
+   $db,
+   $port
 );
 
 $db =  new mysqli($sqlHost, $sqlUser, $sqlPass, $dbName) ;
