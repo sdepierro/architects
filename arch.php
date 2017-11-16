@@ -5,37 +5,48 @@
     <input type="text" name="something" value="" />
     <input type="submit" name="submit" />
   </form>
-
-  <?php
-//$db = new mysqli('127.0.0.1', 'root', '*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B', 'the architects');
+<?php
 
 $what = htmlspecialchars($_POST['something']);
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ // DEFINE('DB_USERNAME', 'root');
+ // DEFINE('DB_PASSWORD', 'root');
+ // DEFINE('DB_HOST', 'localhost');
+ // DEFINE('PORT', '3307')
+ // DEFINE('DB_DATABASE', 'performance_schema');
 
- DEFINE('DB_USERNAME', 'root');
- DEFINE('DB_PASSWORD', '*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B');
- DEFINE('DB_HOST', '127.0.0.1');
- DEFINE('DB_DATABASE', 'inventory');
+ // $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+$user = 'root';
+$password = 'root';
+$db = 'the_architects';
+$host = 'localhost';
+$port = 3307;
 
-$db = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+$link = mysqli_init();
+$success = mysqli_real_connect(
+   $link, 
+   $host, 
+   $user, 
+   $password, 
+   $db,
+   $port
+);
 
  if (mysqli_connect_error()) {
   die('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
  }
 
- echo 'Connected successfully.<br>';
+ echo 'Connected successfully.';
+
 
 
 echo 'Query: ', $what, '<br>';
-$result = $db->query("SELECT blueprint_name FROM blueprints WHERE blueprint_name LIKE '%$what%' ORDER BY blueprint_name")
+$result = $link->query("SELECT link_to_blueprint FROM blueprints WHERE blueprint_name LIKE '%$what%'")
 or trigger_error($db->error);
-//var_dump($result);
-//cast into a string?
-echo 'Result: ', $result, '<br>';
-$db->close();
-?>
+while($row=mysqli_fetch_assoc($result)){
+    echo $row['link_to_blueprint'].'<br/>';
+}
+echo 'Result: ', $what, '<br>';?>
 
 </body>
 </html>
