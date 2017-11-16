@@ -9,11 +9,6 @@
 
 $what = htmlspecialchars($_POST['something']);
 
-//$sqlHost = 'localhost'; HERE WE NEED TO GET TO THE DATABASE
-//$sqlUser = 'user';
-//$sqlPass = 'CSCI330';
-//$dbName = 'Movies';
-
 $user = 'root';
 $password = 'root';
 $db = 'inventory';
@@ -22,10 +17,10 @@ $port = 3306;
 
 $link = mysqli_init();
 $success = mysqli_real_connect(
-   $link, 
-   $host, 
-   $user, 
-   $password, 
+   $link,
+   $host,
+   $user,
+   $password,
    $db,
    $port
 );

@@ -40,10 +40,10 @@ INSERT INTO `blueprints` (`blueprint_name`, `project_id`, `building_id`, `link_t
 ('Copper Beach Exterior Landscape Enhancement 04/13/1998', '0007', '0006', ''),
 ('DOYO Music Wing- Fire and Safety ', '0008', '0007', ''),
 ('Drew Bookstore- Partial Plans 04/24/1994', '0009', '0008', ''),
-('Drew University- Parking Area 8/14/1965', '0010', '0009', ''),
+('Drew University- Parking Area 08/14/1965', '0010', '0009', ''),
 ('Drew University- Proposed future development 10/24/2000', '0011', '0009', ''),
-('Drew University- Utility master plans 2/1/2002', '0012', '0009', ''),
-('Faulkner House- Exterior Restoration 6/27/1995', '0013', '0010', ''),
+('Drew University- Utility master plans 02/01/2002', '0012', '0009', ''),
+('Faulkner House- Exterior Restoration 06/27/1995', '0013', '0010', ''),
 ('University Commons Bookstore - Bookstore Relocation 12/23/2009', '0006', '0005', '');
 
 -- --------------------------------------------------------
@@ -85,19 +85,19 @@ CREATE TABLE `contractors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `contractors` (`contractor_name`, `project_id`) VALUES
-('', '0001'),
-('', '0002'),
-('', '0003'),
-('', '0005'),
-('', '0004'),
-('', '0007'),
-('', '0008'),
-('', '0009'),
-('', '0010'),
-('', '0011'),
-('', '0012'),
-('', '0013'),
-('', '0006');
+('Sample Contractor', '0001'),
+('Sample Contractor', '0002'),
+('Sample Contractor', '0003'),
+('Sample Contractor', '0005'),
+('Sample Contractor', '0004'),
+('Sample Contractor', '0007'),
+('Sample Contractor', '0008'),
+('Sample Contractor', '0009'),
+('Sample Contractor', '0010'),
+('Sample Contractor', '0011'),
+('Sample Contractor', '0012'),
+('Sample Contractor', '0013'),
+('Sample Contractor', '0006');
 
 -- --------------------------------------------------------
 
@@ -134,23 +134,24 @@ CREATE TABLE `photos` (
 CREATE TABLE `project` (
   `project_id` int(11) NOT NULL,
   `building_id` varchar(45) NOT NULL,
-  `item_type` varchar(45) NOT NULL
+  `item_type` varchar(45) NOT NULL,
+  `date` date()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `project` (`project_id`, `building_id`, `item_type`) VALUES
-('0001', '0001', 'blueprint'),
-('0002', '0002', 'blueprint'),
-('0003', '0003', 'blueprint'),
-('0005', '0004', 'blueprint'),
-('0004', '0004', 'blueprint'),
-('0007', '0006', 'blueprint'),
-('0008', '0007', 'blueprint'),
-('0009', '0008', 'blueprint'),
-('0010', '0009', 'blueprint'),
-('0011', '0009', 'blueprint'),
-('0012', '0009', 'blueprint'),
-('0013', '0010', 'blueprint'),
-('0006', '0005', 'blueprint');
+('0001', '0001', 'blueprint', '08/20/1986'),
+('0002', '0002', 'blueprint', '03/29/1979'),
+('0003', '0003', 'blueprint', '11/10/2000'),
+('0005', '0004', 'blueprint', '05/26/1994'),
+('0004', '0004', 'blueprint', '05/11/2005'),
+('0007', '0006', 'blueprint', '04/13/1998'),
+('0008', '0007', 'blueprint', ),
+('0009', '0008', 'blueprint', '04/24/1994'),
+('0010', '0009', 'blueprint', '08/14/1965'),
+('0011', '0009', 'blueprint', '10/24/2000'),
+('0012', '0009', 'blueprint', '02/01/2002'),
+('0013', '0010', 'blueprint', '06/27/1995'),
+('0006', '0005', 'blueprint', '12/23/2009');
 
 --
 -- Indexes for dumped tables

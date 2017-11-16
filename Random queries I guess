@@ -1,0 +1,21 @@
+
+//Shows all blueprints info sorted by input (input = $what)
+$all_blueprints = $db->query("SELECT * FROM blueprints ORDER BY $what")
+or trigger_error($db->error);
+
+//Shows all projects sorted by input (input = $what) (idk if this works)
+$result = $db->query("SELECT * FROM project ORDER BY $what")
+or trigger_error($db->error);
+
+
+//Search contractors by name (input = $what)
+$contractor = $db->query("SELECT * FROM contractors WHERE contractor_name LIKE '%$what%'")
+or trigger_error($db->error);
+
+//Search projects by name (input = $what)
+$project = $db->query("SELECT * FROM project WHERE project_name LIKE '%$what%'")
+or trigger_error($db->error);
+
+//Search the names of everything (input = $what)
+$name_search_result = $db->query("SELECT * FROM project WHERE project_name LIKE '%$what%' OR blueprint_name LIKE '%$what%'")
+or trigger_error($db->error);
