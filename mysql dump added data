@@ -1,0 +1,203 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:8889
+-- Generation Time: Nov 15, 2017 at 04:25 PM
+-- Server version: 5.6.35
+-- PHP Version: 7.1.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `the architects`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blueprints`
+--
+
+CREATE TABLE `blueprints` (
+  `blueprint_name` varchar(70) NOT NULL,
+  `project_id` varchar(45) NOT NULL,
+  `building_id` varchar(45) NOT NULL,
+  `link_to_blueprint` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `blueprints`
+--
+
+INSERT INTO `blueprints` (`blueprint_name`, `project_id`, `building_id`, `link_to_blueprint`) VALUES
+('12 Campus Drive HVAV 08/20/1986', '0001', '0001', 'https://upload.wikimedia.org/wikipedia/commons/1/10/LaBelle_Blueprint.jpg'),
+('49 Woodcliff Garage Installation 03/29/1979', '0002', '0002', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Joy_Oil_gas_station_blueprints.jpg/300px-Joy_Oil_gas_station_blueprints.jpg'),
+('Baldwin Hall Sprinkler Master Plans Phase II 11/10/2000', '0003', '0003', 'http://training.npr.org/wp-content/uploads/2016/06/dreamstime_l_260891731.jpg'),
+('Brothers College Access Ramp 05/26/1994', '0005', '0004', ''),
+('Brothers College Interior Renovations/floor plan 05/11/2005', '0004', '0004', ''),
+('Copper Beach Exterior Landscape Enhancement 04/13/1998', '0007', '0006', ''),
+('DOYO Music Wing- Fire and Safety ', '0008', '0007', ''),
+('Drew Bookstore- Partial Plans 04/24/1994', '0009', '0008', ''),
+('Drew University- Parking Area 8/14/1965', '0010', '0009', ''),
+('Drew University- Proposed future development 10/24/2000', '0011', '0009', ''),
+('Drew University- Utility master plans 2/1/2002', '0012', '0009', ''),
+('Faulkner House- Exterior Restoration 6/27/1995', '0013', '0010', ''),
+('University Commons Bookstore - Bookstore Relocation 12/23/2009', '0006', '0005', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buildings`
+--
+
+CREATE TABLE `buildings` (
+  `building_id` int(11) NOT NULL,
+  `building_name` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `blueprints`
+--
+
+INSERT INTO `buildings` (`building_name`, `building_id`) VALUES
+('12 Campus Drive', '0001'),
+('49 Woodcliff', '0002'),
+('Baldwin Hall', '0003'),
+('Brothers College', '0004'),
+('Copper Beach', '0006'),
+('DOYO Music Wing', '0007'),
+('Drew Bookstore', '0008'),
+('Drew University', '0009'),
+('Faulkner House', '0010'),
+('University Commons Bookstore', '0005');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contractors`
+--
+
+CREATE TABLE `contractors` (
+  `contractor_name` varchar(50) NOT NULL,
+  `project_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `contractors` (`contractor_name`, `project_id`) VALUES
+('', '0001'),
+('', '0002'),
+('', '0003'),
+('', '0005'),
+('', '0004'),
+('', '0007'),
+('', '0008'),
+('', '0009'),
+('', '0010'),
+('', '0011'),
+('', '0012'),
+('', '0013'),
+('', '0006');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documents`
+--
+
+CREATE TABLE `documents` (
+  `document_name` varchar(70) NOT NULL,
+  `project_id` text NOT NULL,
+  `building_id` varchar(45) NOT NULL,
+  `link_to_doc` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `photo_name` int(11) NOT NULL,
+  `project_id` varchar(45) NOT NULL,
+  `building_id` varchar(45) NOT NULL,
+  `link_to_photo` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project`
+--
+
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL,
+  `building_id` varchar(45) NOT NULL,
+  `item_type` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `project` (`project_id`, `building_id`, `item_type`) VALUES
+('0001', '0001', 'blueprint'),
+('0002', '0002', 'blueprint'),
+('0003', '0003', 'blueprint'),
+('0005', '0004', 'blueprint'),
+('0004', '0004', 'blueprint'),
+('0007', '0006', 'blueprint'),
+('0008', '0007', 'blueprint'),
+('0009', '0008', 'blueprint'),
+('0010', '0009', 'blueprint'),
+('0011', '0009', 'blueprint'),
+('0012', '0009', 'blueprint'),
+('0013', '0010', 'blueprint'),
+('0006', '0005', 'blueprint');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `blueprints`
+--
+ALTER TABLE `blueprints`
+  ADD PRIMARY KEY (`blueprint_name`);
+
+--
+-- Indexes for table `buildings`
+--
+ALTER TABLE `buildings`
+  ADD PRIMARY KEY (`building_id`,`building_name`);
+
+--
+-- Indexes for table `contractors`
+--
+ALTER TABLE `contractors`
+  ADD PRIMARY KEY (`contractor_name`);
+
+--
+-- Indexes for table `documents`
+--
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`document_name`);
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`photo_name`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `contractors`
+--
+ALTER TABLE `contractors`
+  ADD CONSTRAINT `contractors_ibfk_1` FOREIGN KEY (`contractor_name`) REFERENCES `blueprints` (`blueprint_name`);
+
+--
+-- Constraints for table `documents`
+--
+ALTER TABLE `documents`
+  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`document_name`) REFERENCES `blueprints` (`blueprint_name`);
