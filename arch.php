@@ -1,10 +1,21 @@
 <html>
 <head><title>Facilities Documents Search</title></head>
 <body>
+<h1> Drew Facilities and Campus Operations Blueprint Database </h1>
+<h2> Search Blueprints </h2>
 <form method="post" action="">
     <input type="text" name="something" value="" />
-    <input type="submit" name="submit" />
+    <input type="submit" name="submit1" />
   </form>
+  <text-align: center>
+  <color: blue>
+
+  <h2> Search Building Names </h2>
+<form method="post" action="">
+    <input type="text" name="something2" value="" />
+    <input type="submit" name="submit2" />
+  </form>
+
 <?php
 
 $what = htmlspecialchars($_POST['something']);
@@ -36,17 +47,30 @@ $success = mysqli_real_connect(
   die('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
  }
 
- echo 'Connected successfully.';
+ echo 'Connected successfully.<br>';
 
-
-
+if (isset($_POST['submit1'])) {
 echo 'Query: ', $what, '<br>';
 $result = $link->query("SELECT link_to_blueprint FROM blueprints WHERE blueprint_name LIKE '%$what%'")
 or trigger_error($db->error);
 while($row=mysqli_fetch_assoc($result)){
-    echo $row['link_to_blueprint'].'<br/>';
+    echo 'Link to Blueprint: ', $row['link_to_blueprint'].'<br/>';
 }
-echo 'Result: ', $what, '<br>';?>
+}
+
+
+
+$what2 = htmlspecialchars($_POST['something2']);
+
+if (isset($_POST['submit2'])) {
+echo 'Query: ', $what2, '<br>';
+$result2 = $link->query("SELECT building_name FROM buildings WHERE building_name LIKE '%$what2%'")
+or trigger_error($db->error);
+while($row=mysqli_fetch_assoc($result2)){
+    echo 'Building: ', $row['building_name'].'<br/>';
+}
+}
+?>
 
 </body>
 </html>
