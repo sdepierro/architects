@@ -17,6 +17,7 @@
   </form>
 
 <?php
+echo "<body style='background-color:lightgreen'>";
 
 $what = htmlspecialchars($_POST['something']);
 
@@ -51,10 +52,12 @@ $success = mysqli_real_connect(
 
 if (isset($_POST['submit1'])) {
 echo 'Query: ', $what, '<br>';
-$result = $link->query("SELECT link_to_blueprint FROM blueprints WHERE blueprint_name LIKE '%$what%'")
+$result = $link->query("SELECT blueprint_name, link_to_blueprint FROM blueprints WHERE blueprint_name LIKE '%$what%'")
 or trigger_error($db->error);
 while($row=mysqli_fetch_assoc($result)){
-    echo 'Link to Blueprint: ', $row['link_to_blueprint'].'<br/>';
+    //echo 'Link to Blueprint: ', $row['link_to_blueprint'], '<br/>';
+  echo $row['blueprint_name'], ': ';
+  echo "<a href='".$row['link_to_blueprint']."'>Link to blueprint/folder</br></a>";
 }
 }
 
@@ -71,6 +74,5 @@ while($row=mysqli_fetch_assoc($result2)){
 }
 }
 ?>
-
 </body>
 </html>
