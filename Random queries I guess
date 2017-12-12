@@ -17,5 +17,5 @@ $project = $db->query("SELECT * FROM project WHERE project_name LIKE '%$what%'")
 or trigger_error($db->error);
 
 //Search the names of everything (input = $what)
-$name_search_result = $db->query("SELECT * FROM project WHERE project_name LIKE '%$what%' OR blueprint_name LIKE '%$what%'")
+$name_search_result = $db->query("SELECT * FROM project WHERE project_name LIKE '%$what%'")
 or trigger_error($db->error);
