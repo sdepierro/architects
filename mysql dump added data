@@ -34,7 +34,7 @@ CREATE TABLE `blueprints` (
 INSERT INTO `blueprints` (`blueprint_name`, `project_id`, `building_id`, `link_to_blueprint`) VALUES
 ('12 Campus Drive HVAV 08/20/1986', '0001', '0001', 'https://upload.wikimedia.org/wikipedia/commons/1/10/LaBelle_Blueprint.jpg'),
 ('49 Woodcliff Garage Installation 03/29/1979', '0002', '0002', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Joy_Oil_gas_station_blueprints.jpg/300px-Joy_Oil_gas_station_blueprints.jpg'),
-('Baldwin Hall Sprinkler Master Plans Phase II 11/10/2000', '0003', '0003', 'http://training.npr.org/wp-content/uploads/2016/06/dreamstime_l_260891731.jpg'),
+('Baldwin Hall Sprinkler Master Plans Phase II 11/10/2000', '0003', '0003', 'https://myfiles.drew.edu/HTCOMNET/Default.aspx?folder=Drive%20O%20(Depts)%2FADFRM%2FBuildings%2FBuilding%20blueprints%2FBaldwin%20Hall%20(BDW)%2FBDW%20Blueprints'),
 ('Brothers College Access Ramp 05/26/1994', '0005', '0004', ''),
 ('Brothers College Interior Renovations/floor plan 05/11/2005', '0004', '0004', ''),
 ('Copper Beach Exterior Landscape Enhancement 04/13/1998', '0007', '0006', ''),
